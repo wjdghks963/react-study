@@ -79,3 +79,18 @@ setCounter(true); // 불만!
 ```
 
 ---
+
+<h4>Form</h4>
+
+TS에서 event.target을 currentTarget으로 한다.
+event: React.FormEvent<HTMLInputElement>와 같이 event 등 타입 설정은 다양하고 양이 방대하기 때문에 모르는 것들은 구글링을 해야한다.
+
+```javascript
+const [value, setValue] = useState("");
+const onChange = (event: React.FormEvent<HTMLInputElement>) => {
+  const {
+    currentTarget: { value },
+  } = event;
+  setValue(value);
+};
+```
