@@ -94,3 +94,11 @@ const onChange = (event: React.FormEvent<HTMLInputElement>) => {
   setValue(value);
 };
 ```
+
+---
+
+<h4>Theme</h4>
+
+타입선언과 테마를 작성해 공통적으로 사용되는 스타일을 테마로 묶어서 코드일관성을 지킬 수 있도록 한다.
+
+styled.d.ts: 타입선언파일, 테마작성
