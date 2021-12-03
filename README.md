@@ -102,3 +102,11 @@ const onChange = (event: React.FormEvent<HTMLInputElement>) => {
 타입선언과 테마를 작성해 공통적으로 사용되는 스타일을 테마로 묶어서 코드일관성을 지킬 수 있도록 한다.
 
 styled.d.ts: 타입선언파일, 테마작성
+
+---
+
+<h4>createGlobalStyle</h4>
+
+styled-components의 createGlobalStyle를 사용해 전체적으로 적용할 style을 설정한다.
+
+App파일 안에 넣어준다.
