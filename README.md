@@ -110,3 +110,9 @@ styled.d.ts: 타입선언파일, 테마작성
 styled-components의 createGlobalStyle를 사용해 전체적으로 적용할 style을 설정한다.
 
 App파일 안에 넣어준다.
+
+---
+
+<h4>()()</h4>
+
+앞에 있는 ()안에 함수를 넣어주면 그 함수는 뒤 ()에 의해 즉시 실행된다.
