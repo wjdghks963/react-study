@@ -80,6 +80,29 @@ setCounter(true); // 불만!
 
 ---
 
+<h4>Link, useLocation</h4>
+
+```javascript
+<Link to={url}>
+```
+
+위와 같은 코드를 통해 useParams를 사용해 해당 링크에 대한 params를 받아와 정보처리
+
+```javascript
+<Link to={{
+pathname: `/${coin.id}`,
+state: { name: coin.name },
+}}>
+```
+
+useLocation를 이용해 정보를 이용할 수 있다.
+
+아래의 방법은 위와 다르게 API를 계속 받을 필요가 없어지고 state를 전달하는 것이기 때문에 효율적이다.
+
+하지만 클릭 의외의 방법으로 직접적으로 url을 입력해서 접속한다면 state가 생성되지 않기 때문에 에러가 발생한다.
+
+---
+
 <h4>Form</h4>
 
 TS에서 event.target을 currentTarget으로 한다.
