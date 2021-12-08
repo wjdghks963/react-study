@@ -139,3 +139,14 @@ App파일 안에 넣어준다.
 <h4>()()</h4>
 
 앞에 있는 ()안에 함수를 넣어주면 그 함수는 뒤 ()에 의해 즉시 실행된다.
+
+---
+
+<h4>API의 Interface 설정 </h4>
+
+API에서 json을 받고 난 후 state를 사용할때 빈 object라고 판단한 TS가 불만은 표출하기 때문에 interface로 설정을 해줘야한다.
+
+그런데 json안에는 엄청난 정보가 있기 때문에 전부 다 타이핑하기엔 힘들다.(필요한것만 뽑더라도...)
+따라서 console.log로 json을 표시하고 브라우저에서 Store object as global variable을 클릭하면 임의의 변수(temp1)로 브라우저에 저장이 된다.
+
+여기서 object의 key()를 사용해 key를 찾고 value()와 map(v => tpye of v).join()을 사용해 value의 type들을 string으로 얻어낸다.
