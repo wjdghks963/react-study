@@ -4,7 +4,9 @@ ThemProvider : 이 컴포넌트에 쌓인 컴포넌트는 props를 통해 theme�
 
 ---
 
-<h2>TS</h2> : TS는 JS로 만들어진 라이브러리에 불만을 표출하기 때문에 TS에게 모든 정보를 알려줘야 한다. 오류가 난 부분에 필요한 커맨드가 적혀 있을 경우 그것을 npm을 이용해 install한다.
+# <h2>TS</h2>
+
+TS는 JS로 만들어진 라이브러리에 불만을 표출하기 때문에 TS에게 모든 정보를 알려줘야 한다. 오류가 난 부분에 필요한 커맨드가 적혀 있을 경우 그것을 npm을 이용해 install한다.
 
 이것은 @types, 즉 Type definition은 해당 라이브러리의 소스코드를 보고 TS에게 해 줄 설명서를 만들어 준다.
 
@@ -59,6 +61,38 @@ sayHello({ name: "jung", age: 20 }); // age에서 오류
 
 ---
 
+<h4>Form</h4>
+
+TS에서 event.target을 currentTarget으로 한다.
+event: React.FormEvent<HTMLInputElement>와 같이 event 등 타입 설정은 다양하고 양이 방대하기 때문에 모르는 것들은 구글링을 해야한다.
+
+```javascript
+const [value, setValue] = useState("");
+const onChange = (event: React.FormEvent<HTMLInputElement>) => {
+  const {
+    currentTarget: { value },
+  } = event;
+  setValue(value);
+};
+```
+
+---
+
+<h4>API의 Interface 설정 </h4>
+
+API에서 json을 받고 난 후 state를 사용할때 빈 object라고 판단한 TS가 불만은 표출하기 때문에 interface로 설정을 해줘야한다.
+
+그런데 json안에는 엄청난 정보가 있기 때문에 전부 다 타이핑하기엔 힘들다.(필요한것만 뽑더라도...)
+따라서 console.log로 json을 표시하고 브라우저에서 Store object as global variable을 클릭하면 임의의 변수(temp1)로 브라우저에 저장이 된다.
+
+여기서 object의 key()를 사용해 key를 찾고 value()와 map(v => tpye of v).join()을 사용해 value의 type들을 string으로 얻어낸다.
+
+---
+
+---
+
+## <h2>React & Hooks</h2>
+
 <h4>State</h4>
 
 ```javascript
@@ -104,23 +138,6 @@ useLocation를 이용해 정보를 이용할 수 있다(location객체 사용가
 
 ---
 
-<h4>Form</h4>
-
-TS에서 event.target을 currentTarget으로 한다.
-event: React.FormEvent<HTMLInputElement>와 같이 event 등 타입 설정은 다양하고 양이 방대하기 때문에 모르는 것들은 구글링을 해야한다.
-
-```javascript
-const [value, setValue] = useState("");
-const onChange = (event: React.FormEvent<HTMLInputElement>) => {
-  const {
-    currentTarget: { value },
-  } = event;
-  setValue(value);
-};
-```
-
----
-
 <h4>Theme</h4>
 
 타입선언과 테마를 작성해 공통적으로 사용되는 스타일을 테마로 묶어서 코드일관성을 지킬 수 있도록 한다.
@@ -143,19 +160,25 @@ App파일 안에 넣어준다.
 
 ---
 
-<h4>API의 Interface 설정 </h4>
-
-API에서 json을 받고 난 후 state를 사용할때 빈 object라고 판단한 TS가 불만은 표출하기 때문에 interface로 설정을 해줘야한다.
-
-그런데 json안에는 엄청난 정보가 있기 때문에 전부 다 타이핑하기엔 힘들다.(필요한것만 뽑더라도...)
-따라서 console.log로 json을 표시하고 브라우저에서 Store object as global variable을 클릭하면 임의의 변수(temp1)로 브라우저에 저장이 된다.
-
-여기서 object의 key()를 사용해 key를 찾고 value()와 map(v => tpye of v).join()을 사용해 value의 type들을 string으로 얻어낸다.
-
----
-
 <h4>useRouteMatch</h4>
 
 useRouteMatch("url")은 유저가 해당 url에 있다면 Object를 받으며 path property와 현재 페이지의 url이 일치하지 않을 경우 null을 반환한다.
 
 Object는 path, strict, sensitive, exact같은 값을 가진 객체다.
+
+---
+
+<h4>react query</h4>
+
+스스로 실핼하고 있었던 로직들을 축약시켜줌
+
+useQuery("고유 식별자", fetcher함수)
+
+```javascript
+const { isLoading, data } = useQuery("allCoins", fetchCoins);
+```
+
+이러할때 isLoading,data는 함수의 실행이 끝나면 값을 리턴한다.
+이때 실행이란 isLoading은 로딩이 끝난다면 일반적으로 사용했던 useEffect안의
+const [loading,isLoading] = useState(true))와 같은 기능을 한다.
+data는 내용물 즉 이 프로젝트에서의 json을 표현한다.
