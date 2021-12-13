@@ -91,6 +91,8 @@ API에서 json을 받고 난 후 state를 사용할때 빈 object라고 판단�
 
 ---
 
+---
+
 ## <h2>React & Hooks</h2>
 
 <h4>State</h4>
@@ -184,7 +186,7 @@ const { isLoading: infoLoading, data: infoData } =
   useQuery < InfoData > (["info", coinId], () => fetchCoinInfo(coinId));
 ```
 
-같은 props를 key로 이용하는 hook을 두개 사용할 경우 key가 중복되기 때문에 설정을 다르게 해줘야한다.
+같은 property를 key로 이용하는 hook을 두개 사용할 경우 key가 중복되기 때문에 설정을 다르게 해줘야한다.
 따라서 query를 array로 보는 React query의 성질을 사용해 array안에서 key를 unique하게 설정할 수 있다.
 
 ```javascript
@@ -197,3 +199,19 @@ const [loading,isLoading] = useState(true))와 같은 기능을 한다.
 data는 내용물 즉 이 프로젝트에서의 json을 표현한다.
 
 React Query Devtools를 사용하여 query에 저장된 cache를 볼 수 있다.
+
+---
+
+---
+
+---
+
+<h2>Library</h2>
+
+<h4>APEXCHARTS</h4>
+
+커스텀이 가능한 차트를 만들 수 있으며 png형태로 저장도 가능하다.
+
+```
+npm install --save react-apexcharts apexcharts
+```
