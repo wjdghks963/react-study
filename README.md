@@ -171,8 +171,21 @@ Object는 path, strict, sensitive, exact같은 값을 가진 객체다.
 <h4>react query</h4>
 
 스스로 실핼하고 있었던 로직들을 축약시켜줌
+cache에 data를 저장하고 그 cache data를 사용하여 API를 계속 불러오지 않게 해줌
 
 useQuery("고유 식별자", fetcher함수)
+
+고유 식별자는 query를 unique하게 식별해주는 key이다.
+이것은 개발자가 설정하는 것이며 "" 즉, string일 필욘 없다.
+React query는 query를 array로 보고 있기때문에 밑과 같이 가능하다.
+
+```javascript
+const { isLoading: infoLoading, data: infoData } =
+  useQuery < InfoData > (["info", coinId], () => fetchCoinInfo(coinId));
+```
+
+같은 props를 key로 이용하는 hook을 두개 사용할 경우 key가 중복되기 때문에 설정을 다르게 해줘야한다.
+따라서 query를 array로 보는 React query의 성질을 사용해 array안에서 key를 unique하게 설정할 수 있다.
 
 ```javascript
 const { isLoading, data } = useQuery("allCoins", fetchCoins);
@@ -182,3 +195,5 @@ const { isLoading, data } = useQuery("allCoins", fetchCoins);
 이때 실행이란 isLoading은 로딩이 끝난다면 일반적으로 사용했던 useEffect안의
 const [loading,isLoading] = useState(true))와 같은 기능을 한다.
 data는 내용물 즉 이 프로젝트에서의 json을 표현한다.
+
+React Query Devtools를 사용하여 query에 저장된 cache를 볼 수 있다.
