@@ -40,6 +40,7 @@ const Coin = styled.li`
 `;
 
 const Title = styled.h1`
+  padding-top: 10px;
   font-size: 40px;
   color: ${theme.accentColor};
 `;
