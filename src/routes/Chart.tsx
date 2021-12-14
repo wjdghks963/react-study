@@ -25,54 +25,47 @@ function Chart({ coinId }: ChartProps) {
       refetchInterval: 10000,
     }
   );
+  const arr = () =>
+    data?.map((item) => {
+      let x = item.time_close.slice(5, 10);
+      let y = [
+        item.open.toFixed(2),
+        item.high.toFixed(2),
+        item.low.toFixed(2),
+        item.close.toFixed(2),
+      ];
+      return { x: x, y: y };
+    });
   return (
     <div>
       {isLoading ? (
         "Loading chart..."
       ) : (
         <ApexChart
-          type="line"
+          type="candlestick"
           series={[
             {
-              name: "Price",
-              data: data?.map((price) => price.close),
+              data: arr(),
             },
           ]}
           options={{
-            theme: {
-              mode: "dark",
-            },
             chart: {
-              height: 300,
-              width: 500,
-              toolbar: {
-                show: false,
-              },
-              background: "transparent",
+              type: "candlestick",
+              width: 1000,
+              height: 500,
             },
-            grid: { show: false },
-            stroke: {
-              curve: "smooth",
-              width: 4,
-            },
-            yaxis: {
-              show: false,
+            theme: { mode: "dark" },
+            title: {
+              text: `${coinId.toString().slice(4).toUpperCase()} Chart`,
+              align: "left",
             },
             xaxis: {
-              axisBorder: { show: false },
-              axisTicks: { show: false },
-              labels: { show: false },
               type: "datetime",
-              categories: data?.map((price) => price.time_close),
+              labels: { rotate: 0 },
             },
-            fill: {
-              type: "gradient",
-              gradient: { gradientToColors: ["#0be881"], stops: [0, 100] },
-            },
-            colors: ["#0fbcf9"],
-            tooltip: {
-              y: {
-                formatter: (value) => `$${value.toFixed(2)}`,
+            yaxis: {
+              tooltip: {
+                enabled: true,
               },
             },
           }}
