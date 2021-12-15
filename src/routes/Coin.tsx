@@ -10,7 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoinInfo, fetchCoinTickers } from "../api";
-import { theme } from "../theme";
+
 import Chart from "./Chart";
 import Price from "./Price";
 
@@ -28,7 +28,7 @@ const Container = styled.div`
 const Title = styled.h1`
   padding-top: 10px;
   font-size: 40px;
-  color: ${theme.accentColor};
+  color: ${(props) => props.theme.accentColor};
 `;
 const Loader = styled.span`
   text-align: center;
@@ -140,7 +140,11 @@ interface PriceData {
   };
 }
 
-function Coin() {
+interface ICoinProps {
+  isDark: boolean;
+}
+
+function Coin({ isDark }: ICoinProps) {
   const { coinId } = useParams<RouteParams>();
   const { state } = useLocation<RouteState>();
   const priceMatch = useRouteMatch("/:coinId/price");
@@ -216,7 +220,7 @@ function Coin() {
               <Price coinId={coinId} />
             </Route>
             <Route path={`/:coinId/chart`}>
-              <Chart coinId={coinId} />
+              <Chart coinId={coinId} isDark={isDark} />
             </Route>
           </Switch>
         </>

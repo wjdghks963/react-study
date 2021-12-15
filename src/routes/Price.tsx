@@ -1,11 +1,10 @@
 import { useQuery } from "react-query";
 import { fetchCoinTickers } from "../api";
 import styled from "styled-components";
-import { theme } from "../theme";
 
 const PriceBox = styled.div`
-  background-color: ${theme.textColor};
-  color: black;
+  background-color: ${(props) => props.theme.bgColor};
+  color: ${(props) => props.theme.textColor};
   max-width: 480px;
   height: 50px;
   border-radius: 15px;
@@ -13,10 +12,12 @@ const PriceBox = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 25px;
+  border: 1px solid black;
 `;
 
 const ChangeRate = styled.text<{ isMinus: boolean }>`
-  color: ${(props) => (props.isMinus ? theme.minusColor : theme.plusColor)};
+  color: ${(props) =>
+    props.isMinus ? props.theme.minusColor : props.theme.plusColor};
   font-weight: bold;
   padding-left: 5px;
 `;

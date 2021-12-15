@@ -208,6 +208,12 @@ React Query Devtools를 사용하여 query에 저장된 cache를 볼 수 있다.
 
 ---
 
+<h2>RECOIL</h2>
+
+REACT를 위한 state management 라이브러리
+
+원래 global state 관리를 위해선 APP에서부터 내려가는 부모가 필요한 계층 구조였지만 state management를 통해 관리 한다면 박스에서 접근해서 사용 가능하게 할 수 있다.
+
 ---
 
 ---
