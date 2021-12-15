@@ -214,6 +214,11 @@ REACT를 위한 state management 라이브러리
 
 원래 global state 관리를 위해선 APP에서부터 내려가는 부모가 필요한 계층 구조였지만 state management를 통해 관리 한다면 박스에서 접근해서 사용 가능하게 할 수 있다.
 
+## Atom은 상태(state)의 일부를 나타낸다. Atoms는 어떤 component에서나 읽고 쓸 수 있으며 atom의 값을 읽는 component들은 암묵적으로 atom을 구독한다. 따라서 atom에 어떤 변화가 있으면 그 atom을 구독하는 모든 component들이 rerendering된다.
+
+useRecoilValue Atom value를 사용하는 함수
+useSetRecoilState Atom value를 useState와 같이 setting하는 함수
+
 ---
 
 ---
