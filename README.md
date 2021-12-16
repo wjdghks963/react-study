@@ -14,6 +14,11 @@ TS는 JS로 만들어진 라이브러리에 불만을 표출하기 때문에 TS�
 
 JSX는 TSX로 JS는 TS로 파일 이름을 바꾼다.
 
+CRA에 typescript를 같이 설치 
+```
+npx create-react-app my-app --template typescript
+```
+
 ---
 
 <h4>interface란</h4>
